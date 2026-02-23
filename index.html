@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahir College, Rewari | Official Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- CORE STYLES --- */
+        :root {
+            --primary: #003366;
+            --secondary: #ffcc00;
+            --accent: #e63946;
+            --text-dark: #2d3436;
+            --text-light: #ffffff;
+            --bg-soft: #f8f9fa;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body { overflow-x: hidden; color: var(--text-dark); background: #fff; }
+
+        /* --- ADVANCED ANIMATIONS --- */
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 204, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background: var(--primary);
+            height: 90px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 2000;
+            transition: 0.5s;
+        }
+
+        nav.sticky {
+            height: 70px;
+            background: rgba(0, 51, 102, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo { color: white; font-size: 2.5rem; font-weight: 800; }
+        .logo span { color: var(--secondary); }
+
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li { margin-left: 30px; }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            bottom: -5px;
+            left: 0;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        /* --- BUTTONS (GLOBAL ANIMATION) --- */
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary { background: var(--secondary); color: var(--primary); }
+        .btn-outline { border: 2px solid white; color: white; background: transparent; }
+
+        .btn:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn:active { transform: scale(0.98); }
+
+        /* Apply pulse to the Apply button */
+        .btn-apply { animation: pulse-gold 2s infinite; }
+
+        /* --- HERO --- */
+        .hero {
+            height: 100vh;
+
+
+
+
+
+
+
+
+
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://scontent.fdel13-1.fna.fbcdn.net/v/t39.30808-6/313206532_489063146574192_283166583958548425_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=Aph-8NHJE5kQ7kNvwHu36ie&_nc_oc=AdlwKx5iGtkQjRgW0hgHp7zpGZr0M7-b2qmiWPHaP9eXnYH38tKI1xnU55lsONmxmJw&_nc_zt=23&_nc_ht=scontent.fdel13-1.fna&_nc_gid=jNkAMw9lndORBrNwGoNhgA&oh=00_AfvRvt9BE8D1yIzM1VCYUP1deJr8pf0PujIPSnNOiHjnXg&oe=69A22B74');
+
+
+
+
+
+
+
+
+
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 { font-size: 4rem; margin-bottom: 20px; font-family: 'Playfair Display', serif; }
+        .hero-content p { font-size: 1.2rem; margin-bottom: 40px; }
+
+        /* --- ABOUT & MESSAGES --- */
+        section { padding: 100px 10%; }
+        
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 10px; }
+        .section-header div { width: 80px; height: 4px; background: var(--secondary); margin: 0 auto; }
+
+        .about-main { display: flex; gap: 50px; align-items: center; margin-bottom: 80px; }
+        .about-text { flex: 1; }
+        .about-img { flex: 1; border-radius: 20px; overflow: hidden; box-shadow: 20px 20px 0 var(--bg-soft); }
+        .about-img img { width: 100%; transition: 0.5s; }
+        .about-img:hover img { transform: scale(1.1); }
+
+        .messages-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .message-card {
+            background: var(--bg-soft);
+            padding: 40px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: var(--transition);
+            border-bottom: 5px solid var(--primary);
+        }
+
+        .message-card:hover { transform: translateY(-10px); background: #fff; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .message-card h3 { color: var(--primary); margin-bottom: 5px; }
+        .message-card span { font-weight: 600; color: var(--accent); display: block; margin-bottom: 15px; }
+        .message-card p { font-style: italic; font-size: 0.95rem; color: #555; line-height: 1.8; }
+
+        /* --- DEPARTMENTS --- */
+
+
+
+
+
+
+
+/* Section Container */
+.academics-section {
+  background-color: white; /* Consistent Deep Navy */
+  padding: 60px 5%;
+  font-family: 'Arial', sans-serif;
+  color: #ffffff;
+}
+
+/* Unified Heading */
+.section-header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.section-header h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.section-header .underline {
+  width: 70px;
+  height: 4px;
+  background-color: #ffc107; /* Yellow Accent */
+}
+
+/* Grid Layout */
+.dept-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+/* Standardized Card Style */
+.dept-card {
+  background-color: #0a3d62; /* Uniform Card Color */
+  border-radius: 10px;
+  border: 2px solid transparent; /* Prepared for hover */
+  overflow: hidden;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.image-box img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.content-box {
+  padding: 20px;
+  text-align: left;
+}
+
+.content-box h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #ffffff; /* Same written color for all */
+}
+
+.content-box p {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #cccccc;
+}
+
+/* --- Uniform Animation --- */
+.dept-card:hover {
+  transform: translateY(-10px); /* Lift animation */
+  border-color: #ffc107; /* Card glows yellow on hover */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.dept-card:hover .image-box img {
+  transform: scale(1.1); /* Zoom animation */
+}
+
+.dept-card:hover .content-box h3 {
+  color: #ffc107; /* Text turns yellow on hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* --- FOOTER --- */
+        footer { background: #001a33; color: white; padding: 80px 10% 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 50px; }
+        .footer-col h4 { color: var(--secondary); margin-bottom: 25px; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col a { color: #ccc; text-decoration: none; transition: 0.3s; }
+        .footer-col a:hover { color: white; padding-left: 10px; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 992px) {
+            .about-main, .messages-container { flex-direction: column; grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="logo"><span> AHIR COLLEGE, REWARI</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#departments">Departments</a></li>
+            <li><a href="#contact">Contact</a></li>
+                    </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>Excellence In Education</h2>
+<h1>AHIR COLLEGE , REWARI</h1>
+
+<h3>AFFILIATED TO INDIRA GANDHI UNIVERSITY , MEERPUR ,REWARI(HARYANA)</h3>
+ (Recognized by UGC under section 2(F) & 12(B) of the UGC Act , 1956)<br><br>
+            <p>Empowering the youth  through knowledge, character, and skill.</p>
+            <div class="hero-btns">
+                <a href="https://highereduhry.ac.in" target="_blank" class="btn btn-primary btn-apply">Apply --></a>
+                <a href="#about" class="btn btn-outline" id="learnMoreBtn">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="section-header">
+            <h2>About The Institution</h2>
+            <div></div>
+        </div>
+
+        <div class="about-main">
+            <div class="about-text">
+                <h3>Our Legacy & Mission</h3>
+<h2>Welcome to Ahir College!</h2>
+                <p>Ahir College has a global outlook towards education to match the international standards of education. The College invested a great amount of time to create a well-designed curriculum for each programme that guides students to a bright future. The quality education offered by Ahir College has created a wave among various organisations and honoured with rankings and awards in different categories.</p>
+                <br>
+                <p>We combine traditional values with modern technology, ensuring our students are not just graduates, but responsible citizens ready for the global workforce.</p>
+            </div>
+
+
+
+
+
+            <div class="about-img">
+                <img src="https://scontent.fdel13-1.fna.fbcdn.net/v/t39.30808-6/480210531_1036028588544309_3057754044783456447_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=2a1932&_nc_ohc=OoTTNGAOBAYQ7kNvwE9xpfR&_nc_oc=AdnOUSlM4khGmezQ-r4LS6UsX57NvYRz5SZ5dPy7qwOEGqVKtmjWG76otpWz4-QIvDE&_nc_zt=23&_nc_ht=scontent.fdel13-1.fna&_nc_gid=m_4OeTtobMFDLL_D-80xMw&oh=00_AfuyXegIU_EGtLDaQwGyn1aUSAllfrpeKwfpgT20GuC4oQ&oe=69A216C1" alt="Campus">
+            </div>
+
+
+
+
+
+        </div>
+<center><h2>Message From leaderships</h2></center>
+
+        <div class="messages-container">
+            <div class="message-card">
+
+
+
+                <img src="C:\Users\Ankit\OneDrive\Desktop\COLLEGE WEBSITE\Rao Inderjeet.jpeg" alt="President" class="profile-img">
+ <h3>Rao Inderjeet Singh</h3>
+                <span>Hon'ble President</span>
+
+
+
+
+
+
+                <p>"It gives me immense pleasure to know that Ahir College, Rewari is upgrading the college website from the year 2020. Ahir College is the oldest institution of higher education in southern Haryana as it was founded in 1945. The college has been imparting higher education through various Under Graduate, Post Graduate and Job Oriented courses. Ahir College has a glorious tradition, being committed to excellence in the fields of education as well as sports by employing highly qualified and experienced faculty. I convey my best wishes for the success & prosperity of the students of the past, present & future of this immensely respected institution. "</p>
+            </div>
+
+            <div class="message-card">
+
+
+
+
+                <img src="C:\Users\Ankit\OneDrive\Desktop\COLLEGE WEBSITE\principle.jpeg" alt="Principal" class="profile-img">
+                <h3>Dr. Urmila Sharma</h3>
+                <span>Principal</span>
+
+
+
+
+
+                <p>"Education is the most powerful weapon. At Ahir College, we emphasize discipline, research, and practical learning. I welcome all aspiring students to be a part of our academic family.Ahir College, Rewari, was established in 1945 with the mission of spreading knowledge and enlightenment among the youth, both locally and in distant regions, serving as a beacon of education. The college continues to thrive, inspired by the vision and blessings of the esteemed Late Rao Birender Singh Ji, former Union Minister. The college operates under the aegis of Ahir College Society (Regd.) and is supported by a team of highly qualified and experienced faculty, committed to provide value-based education to young minds."</p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+<section class="academics-section" id="departments">
+  <div class="section-header">
+    <h2>Academics Department</h2>
+    <div class="underline"></div>
+  </div>
+
+  <div class="dept-grid">
+    <div class="dept-card">
+      <div class="image-box">
+        <img src="https://webcp.enablesoft.in/WebsiteImages/71_1/EditorFiles/images/Geog_-1.jpeg">
+      </div>
+      <div class="content-box">
+        <h3>Arts & Humanities (B.A.)</h3>
+        <p>Empowering critical thinking and fostering a deep understanding of human society and culture.</p>
+      </div>
+    </div>
+
+    <div class="dept-card">
+      <div class="image-box">
+        <img src="https://webcp.enablesoft.in/WebsiteImages/71_1/EditorFiles/images/Zoology-2.jpeg" alt="Department Image">
+      </div>
+      <div class="content-box">
+        <h3>B.Sc. Physical & Life Science</h3>
+        <p>Nurturing scientific temper, innovation, and technical expertise for a better tomorrow.</p>
+      </div>
+    </div>
+
+    <div class="dept-card">
+      <div class="image-box">
+        <img src="https://images.shiksha.com/mediadata/images/1756286700phpmGcRDz.jpeg" alt="Department Image">
+      </div>
+      <div class="content-box">
+        <h3>B.Com & M.Com</h3>
+        <p>Building ethical business leaders and financial professionals for a dynamic global economy.</p>
+      </div>
+    </div>
+
+    <div class="dept-card">
+      <div class="image-box">
+        <img src="https://sbs.du.ac.in/wp-content/uploads/2025/06/WhatsApp-Image-2024-07-18-at-14.24.58_23a4c292.jpg" alt="Department Image">
+      </div>
+      <div class="content-box">
+        <h3>Management Studies (BBA)</h3>
+        <p>Cultivating managerial skills, leadership qualities, and entrepreneurial spirit.</p>
+      </div>
+    </div>
+
+    <div class="dept-card">
+      <div class="image-box">
+        <img src="C:\Users\Ankit\OneDrive\Desktop\COLLEGE WEBSITE\BCA Dept.jpeg" alt="Department Image">
+      </div>
+      <div class="content-box">
+        <h3>Computer Applications (BCA)</h3>
+        <p>Bridging the gap between theory and technology to create future-ready IT professionals.</p>
+      </div>
+    </div>
+
+    <div class="dept-card">
+      <div class="image-box">
+        <img src="https://acnr.in/assets/images/campus/ahir1.jpg" alt="Department Image">
+      </div>
+      <div class="content-box">
+        <h3>B.Sc. Nursing & GNM</h3>
+        <p>Shaping competent, confident, and caring nursing professionals to lead in healthcare.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section id="contact">
+        <div class="section-header">
+            <h2>Contact Us</h2>
+            <div></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px;">
+            <div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3513.882834017688!2d76.6186357!3d28.1956623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d453308801453%3A0xc6c66d2f347895e7!2sAhir%20College%20Rewari!5e0!3m2!1sen!2sin!4v1700000000000" width="100%" height="350" style="border:0; border-radius: 15px;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div style="background: var(--bg-soft); padding: 30px; border-radius: 15px;">
+                <h4 style="margin-bottom: 20px;">Send a Message</h4>
+                <form id="contactForm">
+                    <input type="text" placeholder="Full Name" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px;" required>
+                    <input type="email" placeholder="Email Address" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px;" required>
+                    <textarea placeholder="Message" rows="5" style="width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px;" required></textarea>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Form</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Ahir College</h4>
+                <p>Nurturing minds since 1945. One of the oldest and most respected colleges in Haryana.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="https://www.facebook.com/college.ahir/">FACEBOOK</a></li>
+                    <li><a href="https://highereduhry.ac.in">DHE Haryana</a></li>
+                    <li><a href="https://igu1.ucanapply.com/">Student Portal</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Location</h4>
+                <p>Near Railway Station,<br>Rewari, Haryana 123401</p>
+                <p>Email:  rwr_ahircollege@yahoo.com</p>
+            </div>
+        </div>
+        <center><p>&copy; 2026 Ahir College Rewari |Created with <span class="heart">&#10084;</span> by <strong><a href="https://www.facebook.com/profile.php?id=100083089833676">Ankit Sharma</a></strong></p></center>
+    </footer>
+
+    <script>
+        // Sticky Navbar
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                nav.classList.add('sticky');
+            } else {
+                nav.classList.remove('sticky');
+            }
+        });
+
+        // Learn More Button Logic
+        document.getElementById('learnMoreBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Form Animation
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            btn.innerHTML = 'Sending...';
+            setTimeout(() => {
+                alert('Message Sent Successfully!');
+                btn.innerHTML = 'Submit Form';
+                this.reset();
+            }, 1500);
+        });
+
+        // Intersection Observer for Reveal Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.message-card, .dept-item').forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(40px)";
+            el.style.transition = "1s ease-out";
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
